@@ -1,0 +1,57 @@
+server:
+  port: 3003
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user/**
+          
+
+        - id: EXPENSE-SERVICE
+          uri: lb://EXPENSE-SERVICE
+          predicates:
+            - Path=/expense/**
+
+        - id: ALERT-SERVICE
+          uri: lb://ALERT-SERVICE
+          predicates:
+            - Path=/alert/**
+      # globalcors:
+      #   corsConfigurations:
+      #     '[/**]':
+      #       allowedOrigins:
+      #         - "http://localhost:5500"
+      #       allowedMethods:
+      #         - GET
+      #         - POST
+      #         - PUT
+      #         - DELETE
+      #         - OPTIONS
+      #       allowedHeaders: "*"
+      #       allowCredentials: true
+          
+#   config:
+#     import: configserver:http://localhost:3005
+
+# logging:
+#   level:
+#     org:
+#       springframework:
+#         web:
+#           cors: DEBUG
+#         cloud:
+#           gateway: DEBUG
+#     reactor:
+#       netty:
+#         http:
+#           server: DEBUG
+
+
+

@@ -1,0 +1,4 @@
+com\apigateway\Config\SecurityConfig.class
+com\apigateway\Service\JwtFilterService.class
+com\apigateway\ApiGatewayApplication.class
+com\apigateway\Service\JwtUtilService.class
